@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="70" y1="40" x2="1140" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#050807"/>
+      <stop offset="1" stop-color="#0C1512"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(990 90) rotate(130) scale(540 400)">
+      <stop stop-color="#6EF7CF" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#6EF7CF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="72" y="72" width="1056" height="486" rx="34" fill="#070D0B" stroke="#6EF7CF" stroke-opacity="0.35"/>
+  <text x="124" y="224" fill="#6EF7CF" font-family="Arial, sans-serif" font-size="28" letter-spacing="6">A.S.A.P.</text>
+  <text x="124" y="306" fill="white" font-family="Arial, sans-serif" font-size="62" font-weight="700">Salud del sueno.</text>
+  <text x="124" y="372" fill="white" font-family="Arial, sans-serif" font-size="62" font-weight="700">Privacidad por diseno.</text>
+  <text x="124" y="440" fill="#C4D4CE" font-family="Arial, sans-serif" font-size="26">React Native (Expo SDK 50) + FastAPI + Scikit-Learn 1.4.0</text>
+</svg>
