@@ -74,3 +74,39 @@ export async function fetchDashboardSummary(token) {
     },
   });
 }
+
+export async function calibrateSleepEnvironment(ambientNoiseLevel) {
+  return apiRequest('/api/sleep/calibracion', {
+    method: 'POST',
+    body: JSON.stringify({ ambient_noise_level: ambientNoiseLevel }),
+  });
+}
+
+export async function startSleepSession(token, payload = {}) {
+  return apiRequest('/api/sleep/sesiones/iniciar', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function finishSleepSession(token, sessionId, payload) {
+  return apiRequest(`/api/sleep/sesiones/${sessionId}/finalizar`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function listSleepSessions(token, limit = 20) {
+  return apiRequest(`/api/sleep/sesiones?limit=${limit}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}

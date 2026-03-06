@@ -40,6 +40,13 @@ El dashboard usa:
 
 - `GET /api/dashboard/resumen`
 
+Monitoreo de sueño usa:
+
+- `POST /api/sleep/calibracion`
+- `POST /api/sleep/sesiones/iniciar`
+- `POST /api/sleep/sesiones/{session_id}/finalizar`
+- `GET /api/sleep/sesiones?limit=20`
+
 Ruta frontend:
 
 - `/dashboard`

@@ -44,6 +44,10 @@ export default function AuthAccessPanel() {
     nombre_completo: '',
     email: '',
     password: '',
+    ronca_habitualmente: false,
+    cansancio_diurno: false,
+    acepta_consentimiento_datos: false,
+    acepta_disclaimer_medico: false,
   });
   const [token, setToken] = useState(getStoredToken);
   const [perfil, setPerfil] = useState(null);
@@ -91,8 +95,8 @@ export default function AuthAccessPanel() {
   }, [token, perfil]);
 
   function handleChange(event) {
-    const { name, value } = event.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    const { name, value, checked, type } = event.target;
+    setForm((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
   }
 
   async function handleSubmit(event) {
@@ -108,6 +112,10 @@ export default function AuthAccessPanel() {
               nombre_completo: form.nombre_completo,
               email: form.email,
               password: form.password,
+              ronca_habitualmente: form.ronca_habitualmente,
+              cansancio_diurno: form.cansancio_diurno,
+              acepta_consentimiento_datos: form.acepta_consentimiento_datos,
+              acepta_disclaimer_medico: form.acepta_disclaimer_medico,
             }
           : {
               email: form.email,
@@ -221,6 +229,34 @@ export default function AuthAccessPanel() {
           </label>
         ) : null}
 
+        {mode === 'registro' ? (
+          <div className="rounded-xl border border-white/10 bg-black/25 p-4">
+            <p className="mb-3 text-xs uppercase tracking-[0.14em] text-mint">Perfil de sueño (onboarding)</p>
+
+            <label className="mb-2 flex items-center gap-2 text-sm text-slate-200">
+              <input
+                name="ronca_habitualmente"
+                type="checkbox"
+                checked={form.ronca_habitualmente}
+                onChange={handleChange}
+                className="h-4 w-4 accent-mint"
+              />
+              ¿Roncas habitualmente?
+            </label>
+
+            <label className="flex items-center gap-2 text-sm text-slate-200">
+              <input
+                name="cansancio_diurno"
+                type="checkbox"
+                checked={form.cansancio_diurno}
+                onChange={handleChange}
+                className="h-4 w-4 accent-mint"
+              />
+              ¿Sientes cansancio diurno frecuente?
+            </label>
+          </div>
+        ) : null}
+
         <label className="block">
           <span className="mb-2 block text-xs uppercase tracking-[0.14em] text-slate-300">Correo</span>
           <input
@@ -233,6 +269,36 @@ export default function AuthAccessPanel() {
             placeholder="tu@correo.com"
           />
         </label>
+
+        {mode === 'registro' ? (
+          <div className="space-y-2 rounded-xl border border-white/10 bg-black/25 p-4">
+            <label className="flex items-start gap-2 text-sm text-slate-200">
+              <input
+                required
+                name="acepta_consentimiento_datos"
+                type="checkbox"
+                checked={form.acepta_consentimiento_datos}
+                onChange={handleChange}
+                className="mt-0.5 h-4 w-4 accent-mint"
+              />
+              <span>
+                Acepto el consentimiento informado para tratamiento de datos personales (Ley 1581 de Colombia).
+              </span>
+            </label>
+
+            <label className="flex items-start gap-2 text-sm text-slate-200">
+              <input
+                required
+                name="acepta_disclaimer_medico"
+                type="checkbox"
+                checked={form.acepta_disclaimer_medico}
+                onChange={handleChange}
+                className="mt-0.5 h-4 w-4 accent-mint"
+              />
+              <span>Acepto que A.S.A.P. es una herramienta de bienestar y no reemplaza diagnóstico clínico profesional.</span>
+            </label>
+          </div>
+        ) : null}
 
         <label className="block">
           <span className="mb-2 block text-xs uppercase tracking-[0.14em] text-slate-300">Contraseña</span>
@@ -314,6 +380,10 @@ export default function AuthAccessPanel() {
           Inicia sesión para ver tu dashboard de acceso.
         </div>
       )}
+
+      <p className="mt-5 text-xs text-slate-400">
+        A.S.A.P. es una herramienta de bienestar, no reemplaza un diagnóstico clínico profesional.
+      </p>
     </div>
   );
 }

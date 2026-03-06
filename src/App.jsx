@@ -274,6 +274,9 @@ function App() {
           <HeartPulse className="h-4 w-4 text-mint" />
           <span>A.S.A.P. | Analítica del sueño con arquitectura de privacidad primero</span>
         </div>
+        <p className="mx-auto mt-3 max-w-3xl text-[11px] normal-case tracking-normal text-slate-500">
+          A.S.A.P. es una herramienta de bienestar, no reemplaza un diagnóstico clínico profesional.
+        </p>
       </footer>
     </div>
   );
